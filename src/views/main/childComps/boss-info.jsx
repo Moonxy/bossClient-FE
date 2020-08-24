@@ -1,5 +1,6 @@
 import React from "react";
 import {connect} from 'react-redux'
+import {Redirect} from "react-router-dom";
 import {
     InputItem,
     TextareaItem,
@@ -9,6 +10,9 @@ import {
 from "antd-mobile";
 
 import HeadSelector from "../../../components/content/head-selector";
+
+import {updateUser} from '../../.././redux/actions'
+
 class bossInfo extends React.Component{
     constructor(props) {
         super(props);
@@ -34,10 +38,16 @@ class bossInfo extends React.Component{
     }
 
     saveInfo = () => {
-        console.log(this.state)
+        this.props.updateUser(this.state)
     }
 
     render() {
+        /*通过头像简单判断是否完善信息*/
+        const {header, type} = this.props.user
+        if(header){
+            const path = type === 'finder' ? 'finder':'boss'
+            return <Redirect to={path}/>
+        }
         return (
             <div>
                 <NavBar>老板信息完善</NavBar>
@@ -58,6 +68,6 @@ class bossInfo extends React.Component{
 }
 
 export default connect(
-    state => ({}),
-    {}
+    state => ({user: state.user}),
+    {updateUser}
 )(bossInfo)
