@@ -1,0 +1,13 @@
+.logoImg{
+    display: flex;
+    justify-content: center;
+}
+.logoImg img{
+    height: 180px;
+    width: 180px;
+}
+.error-msg{
+    color: red;
+    text-align: center;
+    font-size: 18px;
+}
