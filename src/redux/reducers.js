@@ -2,7 +2,6 @@ import {combineReducers} from "redux";
 import {
     AUTH_SUCCESS,
     ERROR_MSG,
-    FLAG_CHANGE,
     RECEIVE_USER,
     RESET_USER
 } from './action-types'
@@ -15,7 +14,6 @@ const initUser = {
     redirectPath: ''
 }
 
-const initFlag = 0
 function user(state=initUser, action) {
     switch (action.type) {
         case AUTH_SUCCESS:
@@ -31,16 +29,6 @@ function user(state=initUser, action) {
     }
 }
 
-function flag(state=initFlag, action) {
-    switch (action.type) {
-        case FLAG_CHANGE:
-            return state + 1
-        default:
-            return state
-    }
-}
-
 export default combineReducers({
-    user,
-    flag
+    user
 })

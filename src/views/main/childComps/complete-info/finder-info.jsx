@@ -9,19 +9,17 @@ import {
 }
 from "antd-mobile";
 
-import HeadSelector from "../../../components/content/head-selector";
+import HeadSelector from "../../../../components/content/head-selector";
 
-import {updateUser} from '../../.././redux/actions'
+import {updateUser} from '../../../../redux/actions'
 
-class bossInfo extends React.Component{
+class finderInfo extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
             header: '',
             post: '',
-            info: '',
-            company: '',
-            salary: ''
+            info: ''
         }
     }
 
@@ -50,18 +48,16 @@ class bossInfo extends React.Component{
         }
         return (
             <div>
-                <NavBar>老板信息完善</NavBar>
-                <HeadSelector selectHead ={this.selectHead} />
-                <InputItem onChange={value => this.handleChange('post', value)} placeholder={'请输入招聘职位'}>招聘职位:</InputItem>
-                <InputItem onChange={value => this.handleChange('company', value)} placeholder={'请输入公司名称'}>公司名称:</InputItem>
-                <InputItem onChange={value => this.handleChange('salary', value)} placeholder={'请输入职位薪资'}>职位薪资:</InputItem>
+                <NavBar>求职者信息完善</NavBar>
+                <HeadSelector selectHead={this.selectHead} />
+                <InputItem onChange={value => this.handleChange('post', value)} placeholder={'请输入求职岗位'}>求职岗位:</InputItem>
                 <TextareaItem
                     onChange={value => this.handleChange('info', value)}
-                    placeholder={'请输入职位要求'}
-                    title={'职位要求'}
+                    placeholder={'请输入个人介绍'}
+                    title={'个人介绍'}
                     rows={3}
                 />
-                <Button type={"primary"} onClick={this.saveInfo}>保存</Button>
+                <Button onClick={this.saveInfo} type={"primary"}>保存</Button>
             </div>
         )
     }
@@ -70,4 +66,4 @@ class bossInfo extends React.Component{
 export default connect(
     state => ({user: state.user}),
     {updateUser}
-)(bossInfo)
+)(finderInfo)

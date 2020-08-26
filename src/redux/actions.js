@@ -1,17 +1,16 @@
 import Register from "../network/register"
 import Login from '../network/login'
 import Update from '../network/update'
+import User from '../network/user'
 import {
     AUTH_SUCCESS,
     ERROR_MSG,
-    FLAG_CHANGE,
     RECEIVE_USER,
-    RESET_USER
+    RESET_USER,
 } from './action-types'
 
 export const AuthSuccess = (user) => ({type: AUTH_SUCCESS, data: user})
 export const ErrorMsg = (msg) => ({type: ERROR_MSG, data: msg})
-export const ChangeFlag = () => ({type: FLAG_CHANGE})
 export const ReceiveUser = (user) => ({type: RECEIVE_USER, data: user})
 export const ResetUser = (user) => ({type: RESET_USER, data: user})
 
@@ -53,6 +52,17 @@ export function updateUser(user) {
             dispatch(ReceiveUser(response.data.data))
         }else{
             dispatch(ResetUser(response.data.msg))
+        }
+    }
+}
+
+export function getUser() {
+    return async dispatch => {
+        const response = await User()
+        if(response.data.code === 0){
+            dispatch(ReceiveUser(response.data.data))
+        }else{
+            ResetUser(response.data.msg)
         }
     }
 }

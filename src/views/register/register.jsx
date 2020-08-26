@@ -42,7 +42,7 @@ class Register extends React.Component{
     }
     render() {
         const {msg, redirectPath} = this.props.user
-        if(redirectPath && !this.props.flag){
+        if(redirectPath){
             return <Redirect to={redirectPath}/>
         }
         return (
@@ -81,6 +81,6 @@ class Register extends React.Component{
 }
 
 export default connect(
-    state => ({user: state.user, flag: state.flag}),
+    state => ({user: state.user}),
     {register}
 )(Register)

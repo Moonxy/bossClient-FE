@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from 'react-redux'
-import {login, ChangeFlag} from '../.././redux/actions'
+import {login} from '../.././redux/actions'
 import {Redirect} from 'react-router-dom'
 import {
     NavBar,
@@ -38,8 +38,7 @@ class Login extends React.Component{
     }
     render() {
         const {msg, redirectPath} = this.props.user
-        if(redirectPath && !this.props.flag){
-            this.props.ChangeFlag(1)
+        if(redirectPath){
             return <Redirect to={redirectPath}/>
         }
         return (
@@ -70,6 +69,6 @@ class Login extends React.Component{
 }
 
 export default connect(
-    state => ({user: state.user, flag: state.flag}),
-    {login, ChangeFlag}
+    state => ({user: state.user}),
+    {login}
 )(Login)
