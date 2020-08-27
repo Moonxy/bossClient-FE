@@ -18,6 +18,7 @@ import {getRedirectTo} from '../.././utils/utils'
 import {getUser} from '../.././redux/actions'
 
 import '../.././assets/css/tabbar.css'
+import '../.././assets/css/navbar.css'
 
 class Main extends React.Component{
 

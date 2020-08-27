@@ -3,7 +3,8 @@ import {
     AUTH_SUCCESS,
     ERROR_MSG,
     RECEIVE_USER,
-    RESET_USER
+    RESET_USER,
+    GET_USERLIST
 } from './action-types'
 import {getRedirectTo} from '.././utils/utils'
 
@@ -13,6 +14,7 @@ const initUser = {
     msg: '',
     redirectPath: ''
 }
+const initUserList = []
 
 function user(state=initUser, action) {
     switch (action.type) {
@@ -29,6 +31,16 @@ function user(state=initUser, action) {
     }
 }
 
+function userList(state = initUserList, action) {
+    switch (action.type) {
+        case GET_USERLIST:
+            return action.data
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
-    user
+    user,
+    userList
 })

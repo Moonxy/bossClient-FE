@@ -1,10 +1,12 @@
 import React from "react";
 import {connect} from 'react-redux'
 
+import '../../../.././assets/css/mainbody.css'
+
 class Message extends React.Component{
     render() {
         return (
-            <div>
+            <div className={'main-body'}>
                 message
             </div>
         )

@@ -4,6 +4,8 @@ import {Result, List, WhiteSpace, Button, Modal} from "antd-mobile";
 import Cookies from 'js-cookie'
 import {ResetUser} from '../../../.././redux/actions'
 
+import '../../../.././assets/css/mainbody.css'
+
 const Item = List.Item
 const Brief = Item.Brief
 
@@ -27,7 +29,7 @@ class Personal extends React.Component{
     render() {
         const {user} = this.props
         return (
-            <div>
+            <div className={'main-body'}>
                 <Result
                     img={<img src={require(`../../../.././assets/img/headSelector/${user.header}.jpg`)} style={{width: "50px"}} alt={'head'}/>}
                     title={user.username}
