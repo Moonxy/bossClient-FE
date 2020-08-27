@@ -12,9 +12,12 @@ import finder from './childComps/main-interface/finder'
 import message from './childComps/main-interface/message'
 import personal from "./childComps/main-interface/personal";
 import notFound from "./childComps/main-interface/notFound";
+import Tabbar from "../../components/content/tabbar";
 
 import {getRedirectTo} from '../.././utils/utils'
 import {getUser} from '../.././redux/actions'
+
+import '../.././assets/css/tabbar.css'
 
 class Main extends React.Component{
 
@@ -24,14 +27,16 @@ class Main extends React.Component{
             component: boss,
             title: '求职者列表',
             icon: 'finder',
-            text: '求职者'
+            text: '求职者',
+            hide: false
         },
         {
             path: '/finder',
             component: finder,
             title: '面试官列表',
             icon: 'boss',
-            text: '面试官'
+            text: '面试官',
+            hide: false
         },
         {
             path: '/message',
@@ -80,6 +85,13 @@ class Main extends React.Component{
             return item.path === path
         })
 
+        /*判断哪个tabbarItem需要被隐藏*/
+        if(currentNav){
+            if(this.props.user.type === 'boss')
+                navList[1].hide = true
+            else
+                navList[0].hide = true
+        }
         return (
             <div>
                 {currentNav ? (<NavBar>{currentNav.title}</NavBar>) : null}
@@ -91,7 +103,7 @@ class Main extends React.Component{
                     <Route path={'/finderInfo'} component={finderInfo}></Route>
                     <Route component={notFound}></Route>
                 </Switch>
-                {currentNav ? (<NavBar>{currentNav.title}</NavBar>) : null}
+                {currentNav ? (<Tabbar navList={navList}></Tabbar>) : null}
             </div>
         )
     }
