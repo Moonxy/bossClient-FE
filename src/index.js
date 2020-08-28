@@ -9,6 +9,8 @@ import Login from './views/login/login'
 import Register from './views/register/register'
 import Main from './views/main/main'
 
+import './socket/socketIO'
+
 ReactDOM.render(
     <Provider store={store}>
         <Router>
